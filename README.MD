@@ -37,6 +37,9 @@ Dibuat untuk belajar dan sebagai portfolio yang relevan dengan posisi **Web Deve
 - ✅ Authentication:
   - Login berbasis JWT, proteksi API & UI dashboard
   - Akun default: `admin@example.com` / `password123`
+- ✅ User Management:
+  - CRUD user (email + password)
+  - Proteksi endpoint oleh JWT
 
 ---
 
@@ -102,6 +105,8 @@ ad-campaign-manager/
       pages/
         CampaignList.jsx
         CampaignForm.jsx
+        UserList.jsx
+        UserForm.jsx
         LoginPage.jsx
       components/
         (optional)

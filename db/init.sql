@@ -16,8 +16,12 @@ CREATE TABLE IF NOT EXISTS users (
   id SERIAL PRIMARY KEY,
   email VARCHAR(255) UNIQUE NOT NULL,
   password_hash VARCHAR(255) NOT NULL,
-  created_at TIMESTAMP DEFAULT NOW()
+  created_at TIMESTAMP DEFAULT NOW(),
+  updated_at TIMESTAMP DEFAULT NOW()
 );
+
+ALTER TABLE IF EXISTS users
+  ADD COLUMN IF NOT EXISTS updated_at TIMESTAMP DEFAULT NOW();
 
 INSERT INTO users (email, password_hash)
 SELECT 'admin@example.com', '$2b$10$bSI1ZKNUljSfnSkVxap68.Smxe4pUX3rGygPX/6GNULUK9rxnNM6e'

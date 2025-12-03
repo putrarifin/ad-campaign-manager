@@ -3,6 +3,8 @@ import CampaignList from "./pages/CampaignList";
 import CampaignForm from "./pages/CampaignForm";
 import LoginPage from "./pages/LoginPage";
 import { useAuth } from "./context/AuthContext";
+import UserList from "./pages/UserList";
+import UserForm from "./pages/UserForm";
 
 function ProtectedLayout() {
   const { user, loading, logout } = useAuth();
@@ -28,6 +30,7 @@ function ProtectedLayout() {
           <nav className="app-nav">
             <Link to="/">Campaigns</Link>
             <Link to="/new">New Campaign</Link>
+            <Link to="/users">Users</Link>
           </nav>
         </div>
         <div className="header-actions">
@@ -51,6 +54,9 @@ export default function App() {
         <Route path="/" element={<CampaignList />} />
         <Route path="/new" element={<CampaignForm />} />
         <Route path="/edit/:id" element={<CampaignForm />} />
+        <Route path="/users" element={<UserList />} />
+        <Route path="/users/new" element={<UserForm />} />
+        <Route path="/users/edit/:id" element={<UserForm />} />
       </Route>
     </Routes>
   );

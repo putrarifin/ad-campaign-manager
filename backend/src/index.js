@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import campaignsRouter from "./routes/campaigns.js";
 import authRouter from "./routes/auth.js";
+import usersRouter from "./routes/users.js";
 
 dotenv.config();
 
@@ -17,6 +18,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/auth", authRouter);
 app.use("/api/campaigns", campaignsRouter);
+app.use("/api/users", usersRouter);
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
