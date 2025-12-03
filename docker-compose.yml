@@ -1,0 +1,37 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: ad_campaign_db
+    environment:
+      POSTGRES_USER: app_user
+      POSTGRES_PASSWORD: app_password
+      POSTGRES_DB: ad_campaign_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+
+  backend:
+    build: ./backend
+    container_name: ad_campaign_backend
+    env_file:
+      - ./backend/.env
+    ports:
+      - "4000:4000"
+    depends_on:
+      - db
+
+  frontend:
+    build: ./frontend
+    container_name: ad_campaign_frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    # kalau mau, bisa mount source biar hot reload dari host:
+    # volumes:
+    #   - ./frontend:/usr/src/app
+
+volumes:
+  db-data:
