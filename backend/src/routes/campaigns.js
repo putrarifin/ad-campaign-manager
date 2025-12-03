@@ -7,8 +7,11 @@ import {
   deleteCampaign,
   generateAdCopy,
 } from "../controllers/campaignController.js";
+import { authenticate } from "../middleware/auth.js";
 
 const router = express.Router();
+
+router.use(authenticate);
 
 router.get("/", getAllCampaigns);
 router.get("/:id", getCampaignById);

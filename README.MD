@@ -34,6 +34,9 @@ Dibuat untuk belajar dan sebagai portfolio yang relevan dengan posisi **Web Deve
   - `db` (Postgres)
   - `backend` (API)
   - `frontend` (React dev server)
+- ✅ Authentication:
+  - Login berbasis JWT, proteksi API & UI dashboard
+  - Akun default: `admin@example.com` / `password123`
 
 ---
 
@@ -49,6 +52,7 @@ Dibuat untuk belajar dan sebagai portfolio yang relevan dengan posisi **Web Deve
 - Express
 - pg (PostgreSQL client)
 - dotenv
+- bcryptjs & jsonwebtoken (auth)
 
 **Database**
 - PostgreSQL
@@ -73,8 +77,12 @@ ad-campaign-manager/
         connection.js
       routes/
         campaigns.js
+        auth.js
       controllers/
         campaignController.js
+        authController.js
+      middleware/
+        auth.js
       services/
         aiService.js
     Dockerfile
@@ -89,9 +97,12 @@ ad-campaign-manager/
       main.jsx
       App.jsx
       api.js
+      context/
+        AuthContext.jsx
       pages/
         CampaignList.jsx
         CampaignForm.jsx
+        LoginPage.jsx
       components/
         (optional)
       index.css
